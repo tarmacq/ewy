@@ -1,0 +1,264 @@
+@font-face {
+  font-family: "Satoshi";
+  src: url("https://cd.tarmacq.com/fonts/Satoshi-Variable.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+button, input, select, textarea, a {
+  color: inherit;
+}
+
+html,
+body {
+  height: 100%;
+  background: #ffffff;
+  color: #382701;
+  font-family: "Satoshi", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* ───────────────────────────── Home layout ───────────────────────────── */
+
+.home {
+  min-height: 100vh;
+  padding: 24px 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  position: relative;
+  z-index: 2;
+}
+
+.nav__column {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 120px;
+}
+
+.nav__column--hidden {
+  display: none;
+}
+
+.nav__item {
+  display: inline-block;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.nav__item:hover,
+.nav__item.is-active {
+  color: #b08220;
+}
+
+.projects {
+  display: flex;
+  gap: 32px;
+}
+
+.projects__column {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 180px;
+}
+
+.project-link {
+  display: inline-block;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.project-link:hover {
+  color: #b08220;
+}
+
+/* Hover preview image — centered in the free space under the project lists
+   (--nav-bottom, set by script.js), hidden until a project name is hovered */
+.preview {
+  position: fixed;
+  top: calc(var(--nav-bottom, 64px) + 32px);
+  bottom: 24px;
+  left: 32px;
+  right: var(--preview-right, 32px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.preview.is-visible {
+  visibility: visible;
+}
+
+.preview img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.preview img[hidden] {
+  display: none;
+}
+
+/* Name — same size as the nav, in full bold. Top-right, level with "About",
+   on larger screens; bottom-right on small ones */
+.watermark {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.watermark__text {
+  display: inline-block;
+  white-space: nowrap;
+  font-weight: 900;
+}
+
+.watermark__text--short {
+  display: none;
+}
+
+
+
+.detail {
+  min-height: 100vh;
+  padding: 24px 32px 96px;
+  position: relative;
+}
+
+.detail__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+
+.detail__title {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.detail__heading {
+  text-align: center;
+}
+
+.detail__subtitle {
+  margin-top: 4px;
+  font-size: 12px;
+  font-weight: 300;
+  opacity: 0.7;
+}
+
+.detail__back {
+  cursor: pointer;
+}
+
+.detail__back:hover {
+  color: #b08220;
+}
+
+.detail__description {
+  max-width: 560px;
+  margin: 0 auto 80px;
+  text-align: left;
+  padding: 0 16px;
+  white-space: pre-line;
+}
+
+.detail__description p + p {
+  margin-top: 1em;
+}
+
+.detail__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  align-items: center;
+}
+
+.detail__gallery img {
+  max-width: min(90vw, 1100px);
+  max-height: 85vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ───────────────────────────── About page ───────────────────────────── */
+
+.about__body {
+  max-width: 560px;
+  margin: 96px auto 0;
+  padding: 0 16px;
+}
+
+.about__body p + p {
+  margin-top: 1em;
+}
+
+/* ───────────────────────────── Responsive ───────────────────────────── */
+
+@media (max-width: 720px) {
+  .nav {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .projects {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .preview {
+    bottom: 56px;
+  }
+  .watermark {
+    top: auto;
+    bottom: 24px;
+  }
+  .watermark__text--full {
+    display: none;
+  }
+  .watermark__text--short {
+    display: inline-block;
+  }
+}

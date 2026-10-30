@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta property="og:title" content="Elian Yagouni">
+    <meta property="og:description" content="Algerian photographer and visual designer based in France. A graduate of ÉSAD Orléans (Orléans
+School of Art and Design), currently pursuing a Master’s degree (DNSEP) in Photography and Media
+Archaeology.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ey.tarmacq.com/">
+    <meta property="og:image" content="favicon.ico">
+    <meta property="og:site_name" content="Elian Yagouni">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elian Yagouni</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico?v=2" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <main class="home">
+      <nav class="nav">
+        <div class="nav__column">
+          <a class="nav__item" href="about.html">About</a>
+          <button
+            id="work-toggle"
+            class="nav__item"
+            type="button"
+            aria-expanded="false"
+          >Work</button>
+        </div>
+
+        <div id="projects" class="projects" aria-label="Projects"></div>
+      </nav>
+
+      <div id="preview" class="preview" aria-hidden="true">
+        <img alt="" />
+      </div>
+
+      <div class="watermark" aria-hidden="true">
+        <span class="watermark__text watermark__text--full">ELIAN YAGOUNI</span>
+      <span class="watermark__text watermark__text--short">ELIAN YAGOUNI</span>
+      </div>
+    </main>
+
+    <script src="assets/projects.js"></script>
+    <script src="assets/script.js"></script>
+  </body>
+</html>
