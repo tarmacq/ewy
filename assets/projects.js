@@ -42,7 +42,7 @@ window.PROJECTS = [
       "https://cd.tarmacq.com/dist/ey/gifs/PORT OF ALGIERS.gif",
     ],
     description:
-      "A photographic triptych depicting the Port of Algiers across three different periods: 1898, 1953, and 2023. 2 Through the juxtaposition of archival and contemporary imagery, the project explores the passage of time, the transformation of urban space, and the evolving relationship between architecture, place, and its uses.",
+      "A photographic triptych depicting the Port of Algiers across three different periods: 1898, 1953, and 2023. Through the juxtaposition of archival and contemporary imagery, the project explores the passage of time, the transformation of urban space, and the evolving relationship between architecture, place, and its uses.",
   },
 
   // ───────────── Right column ─────────────
@@ -59,7 +59,7 @@ window.PROJECTS = [
       "https://cd.tarmacq.com/dist/ey/gifs/ANCA 3.gif",
     ],
     description:
-      "Algerian Cinema Digital Archives, 2026 — Visual identity, art direction, graphic design\n\nDevelopment of a new visual identity for the Algerian Cinema Digital Archives (ANCA), an initiative dedicated to preserving and promoting Algeria’s cinematic heritage.\n\nThe project encompasses the visual identity and its graphic applications, establishing a coherent visual language for the archive.\n\nIn collaboration with Nabil Djedouani, founder of the archives.",
+      "Algerian Cinema Digital Archives, 2026. Visual identity, art direction, graphic design\n\nDevelopment of a new visual identity for the Algerian Cinema Digital Archives (ANCA), an initiative dedicated to preserving and promoting Algeria’s cinematic heritage.\n\nThe project encompasses the visual identity and its graphic applications, establishing a coherent visual language for the archive.\n\nIn collaboration with Nabil Djedouani, founder of the archives.",
   },
   {
     id: "tuttopassa",
@@ -78,7 +78,7 @@ window.PROJECTS = [
     id: "dinos-kintsugi",
     column: "right",
     category: "others",
-    name: "DINOS—KINTSUGI",
+    name: "DINOS × KINTSUGI",
     subtitle: "Photography assistance, creative direction, post-production, vinyl design",
     previewImage: "https://cd.tarmacq.com/dist/ey/previews/DINOS.jpg",
     photos: [
@@ -105,13 +105,13 @@ window.PROJECTS = [
     column: "right",
     category: "others",
     name: "LEILA",
-    subtitle: "Poster design, graphic design International Graphic Design Biennial, Chaumont — Student Competition",
+    subtitle: "Poster design, graphic design International Graphic Design Biennial, Chaumont, Student Competition",
     previewImage: "https://cd.tarmacq.com/dist/ey/previews/LEILA.jpg",
     photos: [
       "https://cd.tarmacq.com/dist/ey/gifs/LEILA.gif",
     ],
     description:
-      "Created for the student competition of the International Graphic Design Biennial in Chaumont, under the theme Music and Graphic Design. 3 Inspired by Ahmed Malek’s composition Leila et les autres, the poster translates the song’s distinctive opening notes into a graphic interpretation of nostalgia, memory, and Algiers.",
+      "Created for the student competition of the International Graphic Design Biennial in Chaumont, under the theme Music and Graphic Design. Inspired by Ahmed Malek’s composition Leila et les autres, the poster translates the song’s distinctive opening notes into a graphic interpretation of nostalgia, memory, and Algiers.",
   },
   {
     id: "art-direction",
@@ -124,6 +124,6 @@ window.PROJECTS = [
       "https://cd.tarmacq.com/dist/ey/gifs/ART DIRECTION.gif",
     ],
     description:
-      "A selection of visual projects developed for musicians and artists between 2024 and 2026, spanning album covers, single artworks, graphic compositions, and creative direction. Collaborations include Dinos, Abduh, Msawweb Hakka, zaHHam, 6!KO, Versa, BY$H, Ryadmane, and others. Selected works: zaHHam — Aya Roh 6!KO — RŪH Abduh — Double Helix Versa — SABRE 1",
+      "A selection of visual projects developed for musicians and artists between 2024 and 2026, spanning album covers, single artworks, graphic compositions, and creative direction. Collaborations include Dinos, Abduh, Msawweb Hakka, zaHHam, 6!KO, Versa, BY$H, Ryadmane, and others.",
   },
 ];

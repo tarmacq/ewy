@@ -1,37 +1,43 @@
 // Home page interactions:
 // - Click "Work" to show all projects.
-// - Hover a project name to swap in its preview image, centered on the page.
-// - Click a project name to navigate to its detail page.
+// - Hover a project name to swap in its preview image under the lists.
+// - Click a project name to navigate to its page (/work/<id>/).
 // - Whether Work is open is persisted in sessionStorage so returning from a
-//   project detail page restores the view.
+//   project page restores the view.
 
 (function () {
   const projects = window.PROJECTS || [];
+  const media = window.MEDIA || {};
   const workToggle = document.getElementById("work-toggle");
   const projectsEl = document.getElementById("projects");
   const previewEl = document.getElementById("preview");
-  const previewImg = previewEl ? previewEl.querySelector("img") : null;
 
-  if (!workToggle || !projectsEl || !previewEl || !previewImg) return;
+  if (!workToggle || !projectsEl || !previewEl) return;
 
   const COLUMNS = ["left", "right"];
   const WORK_KEY = "workOpen";
 
+  // Optimized copy made by build.py, or the original if it hasn't run yet
+  const previewSrc = (p) =>
+    (media[p.previewImage] && media[p.previewImage].src) || p.previewImage;
+
   // One ready-made <img> per project, all loaded and decoded up front.
   // Hovering only switches which one is shown, so swaps are instant.
   const previewImages = new Map();
-  previewImg.remove();
   projects.forEach((p) => {
-    if (previewImages.has(p.previewImage)) return;
+    const src = previewSrc(p);
+    if (previewImages.has(src)) return;
     const img = new Image();
     img.alt = "";
     img.hidden = true;
-    img.src = p.previewImage;
+    img.decoding = "async";
+    img.src = src;
     if (img.decode) img.decode().catch(() => {});
     previewEl.appendChild(img);
-    previewImages.set(p.previewImage, img);
+    previewImages.set(src, img);
   });
 
+  // Same markup build.py writes into index.html, so crawlers see the links
   const renderProjects = () => {
     // Each project names its column; anything without one goes on the right
     const columns = COLUMNS.map((name) =>
@@ -43,9 +49,9 @@
           `<div class="projects__column">${col
             .map(
               (p) =>
-                `<a class="project-link" href="project.html?id=${encodeURIComponent(
+                `<a class="project-link" href="/work/${encodeURIComponent(
                   p.id
-                )}" data-preview="${p.previewImage}">${p.name}</a>`
+                )}/" data-preview="${previewSrc(p)}">${p.name}</a>`
             )
             .join("")}</div>`
       )
@@ -60,11 +66,14 @@
     const bottom = projectsEl.getBoundingClientRect().bottom;
     root.setProperty("--nav-bottom", bottom + "px");
     const alignLink = projectsEl.querySelector(
-      `a[href="project.html?id=${ALIGN_ID}"]`
+      `a[href="/work/${ALIGN_ID}/"]`
     );
     if (alignLink) {
       const right = alignLink.getBoundingClientRect().right;
-      root.setProperty("--preview-right", document.documentElement.clientWidth - right + "px");
+      root.setProperty(
+        "--preview-right",
+        document.documentElement.clientWidth - right + "px"
+      );
     }
   };
   window.addEventListener("resize", updateNavBottom);
@@ -105,11 +114,11 @@
   const setWorkOpen = (open) => {
     workToggle.classList.toggle("is-active", open);
     workToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    projectsEl.hidden = !open;
     if (open) {
       renderProjects();
       updateNavBottom();
     } else {
-      projectsEl.innerHTML = "";
       hidePreview();
     }
     try {
@@ -129,10 +138,12 @@
   });
   projectsEl.addEventListener("mouseleave", hidePreview);
 
-  // Restore saved state on load
+  // Restore saved state on load; "/?work" (the About page's Work link) opens it
   let savedWork = "0";
   try {
     savedWork = sessionStorage.getItem(WORK_KEY) || "0";
   } catch (e) {}
-  if (savedWork === "1") setWorkOpen(true);
+  if (savedWork === "1" || new URLSearchParams(location.search).has("work")) {
+    setWorkOpen(true);
+  }
 })();

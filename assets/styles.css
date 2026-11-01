@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Satoshi";
-  src: url("https://cd.tarmacq.com/fonts/Satoshi-Variable.ttf") format("truetype-variations");
+  src: url("/assets/fonts/satoshi-variable.woff2") format("woff2-variations"),
+    url("/assets/fonts/satoshi-variable.woff2") format("woff2");
   font-weight: 100 900;
   font-style: normal;
   font-display: swap;
@@ -10,6 +11,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
 }
 button, input, select, textarea, a {
   color: inherit;
@@ -24,6 +29,7 @@ body {
   font-weight: 400;
   font-size: 15px;
   line-height: 1.45;
+  letter-spacing: -0.5px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -104,7 +110,7 @@ button {
   color: #b08220;
 }
 
-/* Hover preview image — centered in the free space under the project lists
+/* Hover preview image, centered in the free space under the project lists
    (--nav-bottom, set by script.js), hidden until a project name is hovered */
 .preview {
   position: fixed;
@@ -137,12 +143,14 @@ button {
   display: none;
 }
 
-/* Name — same size as the nav, in full bold. Top-right, level with "About",
+/* Name: same size as the nav, in full bold. Top-right, level with "About",
    on larger screens; bottom-right on small ones */
 .watermark {
   position: absolute;
   top: 24px;
   right: 32px;
+  font-size: inherit;
+  line-height: inherit;
   pointer-events: none;
   user-select: none;
 }
@@ -151,10 +159,7 @@ button {
   display: inline-block;
   white-space: nowrap;
   font-weight: 900;
-}
-
-.watermark__text--short {
-  display: none;
+  pointer-events: auto;
 }
 
 
@@ -216,7 +221,8 @@ button {
   align-items: center;
 }
 
-.detail__gallery img {
+.detail__gallery img,
+.detail__gallery video {
   max-width: min(90vw, 1100px);
   max-height: 85vh;
   width: auto;
@@ -254,11 +260,5 @@ button {
   .watermark {
     top: auto;
     bottom: 24px;
-  }
-  .watermark__text--full {
-    display: none;
-  }
-  .watermark__text--short {
-    display: inline-block;
   }
 }
