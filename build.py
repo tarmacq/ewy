@@ -434,6 +434,8 @@ def head(*, title, description, path, og_type="website", image=None, ld=(), prel
         f'<meta name="twitter:image" content="{SITE}{image["src"]}" />',
         f'<meta name="twitter:image:alt" content="{esc(image["alt"])}" />',
         f'<script type="application/ld+json">{graph}</script>',
+        '<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>',
+        '<script defer src="/_vercel/insights/script.js"></script>',
     ]
     return "\n".join("    " + l for l in lines)
 
